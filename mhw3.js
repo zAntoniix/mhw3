@@ -32,11 +32,13 @@ function onLyricsJson(json) {
   console.log('JSON ricevuto');
   const space = document.querySelector('#result-view');
   space.innerHTML = '';
+  const testo = json.lyrics;
 
-  const testo = document.createElement('p');
-  testo.classList.add('testo');
-  testo.textContent = json.lyrics;
-  space.appendChild(testo);
+  const paragrafo = document.createElement('p');
+  paragrafo.classList.add('testo');
+  const testo_mod = testo.replace(/(\r\n|\r|\n)/g, '<br>');
+  paragrafo.innerHTML = testo_mod;
+  space.appendChild(paragrafo);
 }
 
 function onTokenJson(json) {
